@@ -48,6 +48,8 @@ class Ball {
  void draw() {
    if ( state != 3 ) {
      smooth();
+     fill(c);
+     stroke(c);
      ellipse(x,y,rad,rad);
    }
  }
@@ -56,21 +58,25 @@ class Ball {
    if( this.rad <= 0) {
      state = 3;
    }
-   if( this.state == GROWING ) {
+   if( this.state == 2 || this.state ==1 ) {
      dx = 0;
      dy = 0;
+     changeSize();
    }
    if( this.rad >= maxRad ) {
      state = SHRINKING;
    }
-   if( state != 3 ) {
-     if( state == 1 ) {
-      rad += .25; 
-     }
-     if( state == 2 ) {
-       rad -= .25;
-     }
+   if( state == 0) {
      move();
+   }
+ }
+ 
+ void changeSize() {
+   if( state == 1 ) {
+     rad += .25;
+   }
+   else {
+     rad -= .25;
    }
  }
  

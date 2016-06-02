@@ -23,11 +23,15 @@ void draw() {
       }
     }
   }
-  
+  boolean mving = false;
+  boolean growing = false;
   for (int i=0; i < balls.length; i++ ) {
     balls[i].draw();
     balls[i].process();
+    if( balls[i].state == 0 ) { mving = true; }
+    if( balls[i].state == 1 || balls[i].state == 2 ) { growing = true; }
   }
+  if( mving && !growing ) { reactionStarted = false; }
 }
 
 
